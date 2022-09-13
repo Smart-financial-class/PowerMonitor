@@ -1,7 +1,10 @@
-# Vue 3 + Vite
+# 电量监控后台系统
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 技术栈
+Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## 参考文档
+<a href="https://cn.vuejs.org/">Vue3中文文档</a>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web">MDN Web开发指南</a>
+<a href=""></a>
