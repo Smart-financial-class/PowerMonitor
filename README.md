@@ -28,6 +28,8 @@ __ps:__
 
 ## 技术栈
 Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
+UI库: Element Plus
+CSS: Less
 
 ## 参考文档
 - <a href="https://cn.vuejs.org/">Vue3中文文档</a><br />

@@ -9,9 +9,13 @@ module.exports = {
   ],
   overrides: [
   ],
+  parse: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true
+    }
   },
   plugins: [
     'vue'
