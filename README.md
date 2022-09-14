@@ -33,5 +33,5 @@ Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
 - <a href="https://cn.vuejs.org/">Vue3中文文档</a><br />
 - <a href="https://developer.mozilla.org/zh-CN/docs/Web">MDN Web开发指南</a><br />
 - <a href="https://router.vuejs.org/zh/">Vue-Router官方路由</a><br />
-- <a href="https://2x.antdv.com/components/overview-cn">Ant Design UI库</a><br />
+- <a href="https://element-plus.gitee.io/zh-CN/">Element Plus UI库</a><br />
 <a href=""></a><br />
