@@ -1,5 +1,13 @@
 # 电量监控后台系统
 
+## 接入指南
+```bash
+  git clone https://github.com/Smart-financial-class/PowerMonitor.git #克隆仓库
+  cd PowerMonitor #进入项目目录
+  npm install yarn -g #全局安装yarn
+  yarn  #下载所有依赖
+```
+
 ## 项目开发指南
 `cd 项目目录`
 ```js
@@ -25,4 +33,5 @@ Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
 - <a href="https://cn.vuejs.org/">Vue3中文文档</a><br />
 - <a href="https://developer.mozilla.org/zh-CN/docs/Web">MDN Web开发指南</a><br />
 - <a href="https://router.vuejs.org/zh/">Vue-Router官方路由</a><br />
+- <a href="https://2x.antdv.com/components/overview-cn">Ant Design UI库</a><br />
 <a href=""></a><br />
