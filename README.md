@@ -27,8 +27,8 @@ __ps:__
 - @__潘时煌__
 
 ## 技术栈
-Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
-UI库: Element Plus
+Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)  
+UI库: Element Plus  
 CSS: Less
 
 ## 开发进度
