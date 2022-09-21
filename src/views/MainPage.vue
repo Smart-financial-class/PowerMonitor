@@ -50,7 +50,7 @@
             <el-icon><User /></el-icon>
           </div>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main><router-view></router-view></el-main>
       </el-container>
     </el-container>
   </div>
@@ -109,6 +109,7 @@ const changeMenu = () => {
 
     .el-aside {
       background-color: rgb(13, 28, 44);
+      overflow: hidden;
       .el-menu {
         width: 202px;
       }
@@ -125,7 +126,7 @@ const changeMenu = () => {
     }
 
     .el-main {
-      background-color: rgb(228, 228, 228);
+      // background-color: rgb(228, 228, 228);
     }
   }
 }
