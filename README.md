@@ -31,6 +31,9 @@ Vue3 + Vite + Yarn + ***Eslint***(~~Crazy~~)
 UI库: Element Plus
 CSS: Less
 
+## 开发进度
+在<a href="https://github.com/orgs/Smart-financial-class/projects/1">此处</a>查看项目进度
+
 ## 参考文档
 - <a href="https://cn.vuejs.org/">Vue3中文文档</a><br />
 - <a href="https://developer.mozilla.org/zh-CN/docs/Web">MDN Web开发指南</a><br />
