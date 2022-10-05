@@ -1,4 +1,23 @@
-<script setup>
+<script lang="ts" setup>
+import { ref } from 'vue'
+import {
+  Document,
+  Menu as IconMenu,
+  Location,
+  Setting,
+  FolderAdd,
+  User
+} from '@element-plus/icons-vue'
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const isCollapse = ref(false)
+const changeMenu = () => {
+  isCollapse.value = !isCollapse.value
+}
 </script>
 
 <template>
@@ -26,18 +45,19 @@
               <el-icon><icon-menu /></el-icon>
               <span>电量监控</span>
             </template>
-            <el-menu-item index="1-1">首页</el-menu-item>
-            <el-menu-item index="1-2">车辆详情</el-menu-item>
+            <el-menu-item index="1-1" @click="setRouter('home')">首页</el-menu-item>
+            <el-menu-item index="1-2" @click="setRouter('carinfo')">车辆详情</el-menu-item>
+            <el-menu-item index="1-3" @click="setRouter('lowpower')">低电量车列表</el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="2">
+          <el-menu-item index="2" @click="setRouter('map')">
             <el-icon><location /></el-icon>
             <span>地图分布</span>
           </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item index="3" @click="setRouter('monitor')">
             <el-icon><document /></el-icon>
             <span>车辆监控</span>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="4" @click="setRouter('statistics')">
             <el-icon><setting /></el-icon>
             <span>统计分析</span>
           </el-menu-item>
@@ -46,7 +66,8 @@
       <el-container>
         <el-header class="top-line">
           <el-icon @click="changeMenu"><FolderAdd /></el-icon>
-          <div class="user-icon">Username
+          <div class="user-icon">
+            Username
             <el-icon><User /></el-icon>
           </div>
         </el-header>
@@ -56,27 +77,16 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-  FolderAdd,
-  User
-} from '@element-plus/icons-vue'
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const isCollapse = ref(false)
-const changeMenu = () => {
-  isCollapse.value = !isCollapse.value
+<script lang="ts">
+export default {
+  methods: {
+    setRouter (router: string) {
+      this.$router.push(`/${router}`)
+    }
+  }
 }
 </script>
+
 
 <style lang="less" scoped>
 .page {

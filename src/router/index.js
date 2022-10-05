@@ -2,6 +2,7 @@
 import * as VueRouter from 'vue-router'
 // 也可以从其他文件导入
 import HomePage from '../components/HomePage.vue'
+import LowPower from '../components/LowPower.vue'
 
 const Home = { template: '<div>Home</div>' }
 const About = { template: '<div>About</div>' }
@@ -11,6 +12,8 @@ const About = { template: '<div>About</div>' }
 // 我们后面再讨论嵌套路由。
 const routes = [
   { path: '/', component: HomePage },
+  { path: '/home', component: HomePage },
+  { path: '/lowpower', component: LowPower },
   { path: '/about', component: About },
 ]
 
