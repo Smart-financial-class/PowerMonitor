@@ -9,7 +9,8 @@ module.exports = {
   ],
   overrides: [
   ],
-  // parse: 'babel-eslint',
+  // 防止ts函数重载报错
+  parse: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
