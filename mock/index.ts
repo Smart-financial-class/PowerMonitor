@@ -1,4 +1,5 @@
 import Mock from "mockjs"
+import { MockMethod } from 'vite-plugin-mock'
 
 const Random = Mock.Random
 
@@ -22,7 +23,7 @@ function dicingChar(series) {
     return series[~~(Math.random() * series.length)]
 }
 
-let data = Mock.mock("/api/getLowPowerCarList", "get", {
+let data = Mock.mock({
     "code": 200,
     "data|1-15": [{
         "车牌号": getPlate,
@@ -35,5 +36,13 @@ let data = Mock.mock("/api/getLowPowerCarList", "get", {
         "当日行驶里程": () => Random.integer(100, 250) + "公里"
     }]
 })
+
+export default [{
+    url: "/api/getLowPowerCarList",
+    method: "get",
+    response: () => {
+        return data
+    }
+}] as MockMethod[]
 
 console.log(data);

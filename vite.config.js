@@ -8,8 +8,9 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig({
     plugins: [vue(),
         viteMockServe({
-            mockPath: "mock",
-            supportTs: false
+            mockPath: "./mock/",
+            supportTs: false,
+            localEnabled: true
         })
     ],
 

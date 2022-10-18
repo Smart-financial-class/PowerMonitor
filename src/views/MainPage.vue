@@ -81,7 +81,7 @@ const changeMenu = () => {
 import axios from "axios";
 export default {
   mounted() {
-
+    this.mockTest();
   },
   methods: {
     setRouter (router: string) {
@@ -91,6 +91,9 @@ export default {
       axios.get("/api/getLowPowerCarList")
       .then(res => {
         console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
       });
     }
   }
