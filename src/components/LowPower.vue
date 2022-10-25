@@ -53,25 +53,24 @@
 	import type {
 		Column
 	} from 'element-plus'
-	import axios from "axios"
+	import axios from 'axios'
 
-	mounted() {
-			this.mockTest()
-		},
-		methods: {
-			setRouter(router: string) {
-				this.$router.push(`/${router}`)
-			},
-			mockTest() {
-				axios.get("/api/getLowPowerCarList")
-					.then(res => {
-						console.log(res)
-					})
-					.catch(err => {
-						console.log(err)
-					})
-			}
-		}
+
+	const setRouter = function (router: string) {
+		this.$router.push(`/${router}`)
+	}
+	const mockTest = function () {
+		axios.get("/api/getLowPowerCarList")
+			.then(res => {
+				console.log(res)
+			})
+			.catch(err => {
+				console.log(err)
+			});
+	}
+
+
+	mockTest();
 
 	const value = ref('')
 	const options = [{
@@ -99,7 +98,6 @@
 	let id = 0
 
 	const dataGenerator = () => ({
-		id: `random-id-${++id}`,
 		model: '万象-786',
 		route: '1路',
 		number: '浙A 88888',
@@ -108,7 +106,7 @@
 		state: '正常',
 		theoRange: '900公里',
 		todayRange: '5公里',
-		plate: 'CL-507',
+		plate: 'CL-507',   
 	})
 
 	const columns: Column < any > [] = [{
