@@ -47,19 +47,21 @@
 		ElIcon,
 		ElTag,
 		ElTooltip,
-		TableV2FixedDir,
+		ElCheckTag,
+		TableV2FixedDir
 	} from 'element-plus'
 
 	import type {
 		Column
 	} from 'element-plus'
+
 	import axios from 'axios'
 
 
-	const setRouter = function (router: string) {
+	const setRouter = function(router: string) {
 		this.$router.push(`/${router}`)
 	}
-	const mockTest = function () {
+	const mockTest = function() {
 		axios.get("/api/getLowPowerCarList")
 			.then(res => {
 				console.log(res)
@@ -106,7 +108,7 @@
 		state: '正常',
 		theoRange: '900公里',
 		todayRange: '5公里',
-		plate: 'CL-507',   
+		plate: 'CL-507',
 	})
 
 	const columns: Column < any > [] = [{
@@ -117,9 +119,10 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: plate
-			}) => < ElCheckTag checked style = "margin-right: 8px" > {
-				plate
-			} < /ElCheckTag>,
+			}) => <> 
+				<ElCheckTag checked style = "margin-right: 8px" >
+				plate </ElCheckTag>
+			</>,
 		},
 		{
 			key: 'model',
@@ -129,9 +132,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: model
-			}) => < > {
+			}) => <> {
 				model
-			} < />,
+			} </>,
 		},
 		{
 			key: 'route',
@@ -141,9 +144,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: route
-			}) => < > {
+			}) => <> {
 				route
-			} < />,
+			} </>,
 		},
 		{
 			key: 'number',
@@ -153,9 +156,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: number
-			}) => < > {
+			}) => <> {
 				number
-			} < />,
+			} </>,
 		},
 		{
 			key: 'time',
@@ -165,9 +168,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: time
-			}) => < > {
+			}) => <> {
 				time
-			} < />,
+			} </>,
 		},
 		{
 			key: 'power',
@@ -177,9 +180,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: power
-			}) => < > {
+			}) => <> {
 				power
-			} < />,
+			} </>,
 		},
 		{
 			key: 'state',
@@ -189,9 +192,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: state
-			}) => < > {
+			}) => <> {
 				state
-			} < />,
+			} </>,
 		},
 		{
 			key: 'theoRange',
@@ -201,9 +204,9 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: theoRange
-			}) => < > {
+			}) => <> {
 				theoRange
-			} < />,
+			} </>,
 		},
 		{
 			key: 'todayRange',
@@ -213,18 +216,17 @@
 			align: 'center',
 			cellRenderer: ({
 				cellData: todayRange
-			}) => < > {
+			}) => <> {
 				todayRange
-			} < />,
+			} </>,
 		},
 		{
 			key: 'check',
 			title: '操作',
-			cellRenderer: () => ( < >
-				<
-				ElButton size = "small"
+			cellRenderer: () => ( <>
+				<ElButton size = "small"
 				type = "success" >
-				充电记录 < /ElButton>  < / >
+				充电记录 </ElButton>  </>
 			),
 			width: 150,
 			align: 'center',
