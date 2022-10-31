@@ -78,10 +78,23 @@ const changeMenu = () => {
 </template>
 
 <script lang="ts">
+import axios from "axios";
 export default {
+  mounted() {
+    this.mockTest();
+  },
   methods: {
     setRouter (router: string) {
       this.$router.push(`/${router}`)
+    },
+    mockTest() {
+      axios.get("/api/getLowPowerCarList")
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      });
     }
   }
 }
