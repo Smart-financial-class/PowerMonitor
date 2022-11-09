@@ -95,6 +95,14 @@ export default {
       .catch(err => {
         console.log(err)
       });
+
+      axios.get("/api/homePageData")
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      });
     }
   }
 }
