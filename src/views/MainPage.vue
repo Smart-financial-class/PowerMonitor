@@ -71,7 +71,7 @@ const changeMenu = () => {
             <el-icon><User /></el-icon>
           </div>
         </el-header>
-        <el-main><router-view></router-view></el-main>
+        <el-main class="components-canvas"><router-view></router-view></el-main>
       </el-container>
     </el-container>
   </div>
@@ -154,6 +154,10 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .components-canvas {
+      background-color: rgb(243, 246, 247);
     }
   }
 }
