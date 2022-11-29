@@ -8,6 +8,7 @@ import Statistics from '../components/Statistics.vue'
 import Day from '../components/paper/day.vue'
 import Month from '../components/paper/month.vue'
 import Year from '../components/paper/year.vue'
+import MapPage from '../components/MapPage.vue'
 
 
 // 2. 定义一些路由
@@ -18,33 +19,34 @@ const routes = [
   { path: '/home', component: HomePage },
   { path: '/lowpower', component: LowPower },
   { path: '/carinfo', component: CarInfo },
-  { 
-    path:'/statistics',
-    component:Statistics,
+  {
+    path: '/statistics',
+    component: Statistics,
     children: [
       {
         // 当 /user/:id/profile 匹配成功
         // UserProfile 将被渲染到 User 的 <router-view> 内部
         path: '',
-        name:'Day',
+        name: 'Day',
         component: Day,
       },
       {
         // 当 /user/:id/posts 匹配成功
         // UserPosts 将被渲染到 User 的 <router-view> 内部
         path: 'month',
-        name:'Month',
+        name: 'Month',
         component: Month,
       },
       {
         // 当 /user/:id/posts 匹配成功
         // UserPosts 将被渲染到 User 的 <router-view> 内部
         path: 'year',
-        name:'Year',
+        name: 'Year',
         component: Year,
       },
     ],
-  }
+  },
+  { path: '/map', component: MapPage },
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置
