@@ -32,7 +32,7 @@
 </template>
 <script lang="tsx" setup>
 	import {
-		ref
+		ref, onMounted, defineComponent 
 	} from 'vue'
 	import {
 		Search,
@@ -61,19 +61,9 @@
 	const setRouter = function(router: string) {
 		this.$router.push(`/${router}`)
 	}
-	const mockTest = function() {
-		axios.get("/api/getLowPowerCarList")
-			.then(res => {
-				console.log(res)
-			})
-			.catch(err => {
-				console.log(err)
-			});
-	}
-
-
-	mockTest();
-
+	
+	
+	
 	const value = ref('')
 	const options = [{
 			value: 'Option1',
@@ -97,37 +87,37 @@
 			label: 'Option5',
 		},
 	]
-	let id = 0
-
-	const dataGenerator = () => ({
-		model: '万象-786',
-		route: '1路',
-		number: '浙A 88888',
-		time: '2002/10/20',
-		power: '100%',
-		state: '正常',
-		theoRange: '900公里',
-		todayRange: '5公里',
-		plate: 'CL-507',
-	})
+	const data = ref([]);
+	
+	const dataGenerator = () => {
+		return axios.get("/api/getLowPowerCarList")
+			.then(res => {
+				
+				data.value = res.data.data;
+				
+			})
+	}
+	onMounted(() => {dataGenerator() })
+	
+	//const dataGenerator = mockTest()
 
 	const columns: Column < any > [] = [{
 			key: 'plate',
 			title: '车辆自编号',
-			dataKey: 'plate',
-			width: 150,
+			dataKey: '车辆详情.VIN',
+			width: 200,
 			align: 'center',
 			cellRenderer: ({
 				cellData: plate
-			}) => <> 
+			}) =>
 				<ElCheckTag checked style = "margin-right: 8px" >
-				plate </ElCheckTag>
-			</>,
+				{plate} </ElCheckTag>
+			,
 		},
 		{
 			key: 'model',
 			title: '型号',
-			dataKey: 'model',
+			dataKey: '车辆型号',
 			width: 150,
 			align: 'center',
 			cellRenderer: ({
@@ -139,8 +129,8 @@
 		{
 			key: 'route',
 			title: '线路',
-			dataKey: 'route',
-			width: 50,
+			dataKey: '线路',
+			width: 100,
 			align: 'center',
 			cellRenderer: ({
 				cellData: route
@@ -151,7 +141,7 @@
 		{
 			key: 'number',
 			title: '车牌号',
-			dataKey: 'number',
+			dataKey: '车牌号',
 			width: 150,
 			align: 'center',
 			cellRenderer: ({
@@ -163,7 +153,7 @@
 		{
 			key: 'time',
 			title: '车辆启动时间',
-			dataKey: 'time',
+			dataKey: '车辆启用时间',
 			width: 150,
 			align: 'center',
 			cellRenderer: ({
@@ -175,7 +165,7 @@
 		{
 			key: 'power',
 			title: '剩余电量',
-			dataKey: 'power',
+			dataKey: '剩余电量',
 			width: 50,
 			align: 'center',
 			cellRenderer: ({
@@ -187,7 +177,7 @@
 		{
 			key: 'state',
 			title: '状态',
-			dataKey: 'state',
+			dataKey: '状态',
 			width: 70,
 			align: 'center',
 			cellRenderer: ({
@@ -199,7 +189,7 @@
 		{
 			key: 'theoRange',
 			title: '理论续航里程',
-			dataKey: 'theoRange',
+			dataKey: '理论续航里程',
 			width: 120,
 			align: 'center',
 			cellRenderer: ({
@@ -211,7 +201,7 @@
 		{
 			key: 'todayRange',
 			title: '当日行驶里程',
-			dataKey: 'todayRange',
+			dataKey: '当日行驶里程',
 			width: 120,
 			align: 'center',
 			cellRenderer: ({
@@ -233,9 +223,9 @@
 		},
 	]
 
-	const data = ref(Array.from({
-		length: 30
-	}).map(dataGenerator))
+	//const data = ref(Array.from({length}).map(dataGenerator2))
+	
+
 </script>
 
 <style scoped>
@@ -250,6 +240,9 @@
 		display: flex;
 		flex-direction: column;
 		text-align: left;
+		background-color: #fff;
+		padding: 10px 10px 10px 10px;
+		margin-bottom: 10px;
 	}
 
 	.lowpower-head span {
@@ -257,16 +250,17 @@
 	}
 
 	.lowpower-content {
-		width: 95%;
+		width: 100%;
 		height: 700px;
-		border: 1px solid #000;
+/* 		border: 1px solid #000; */
+		background-color: #fff;
 	}
 
 	.lowpower-content-ability-a {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: left;
-		margin: 20px 0 20px 0;
+		margin: 20px 0px 20px 30px;
 	}
 
 	.lowpower-content-ability-a>* {
@@ -277,9 +271,10 @@
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: nowrap;
+		margin: 0px 0px 0px 0px;
 	}
 
 	.lowpower-content-ability-b>* {
-		margin: 0px 20px 0px 20px;
+		margin: 20px 30px 20px 30px;
 	}
 </style>
