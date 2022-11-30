@@ -9,7 +9,7 @@ import Day from '../components/paper/day.vue'
 import Month from '../components/paper/month.vue'
 import Year from '../components/paper/year.vue'
 import MapPage from '../components/MapPage.vue'
-
+import DetailList from '../components/DetailList.vue'
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -47,6 +47,7 @@ const routes = [
     ],
   },
   { path: '/map', component: MapPage },
+  { path: '/monitor', component: DetailList }
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置
