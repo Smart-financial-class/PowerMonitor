@@ -35,17 +35,6 @@
   </div>
 </template>
 
-<!-- <script>
-import { ref } from 'vue'
-export default {
-  name: 'HomePage',
-  setup() {
-    return {}
-  },
-  
-}
-
-</script> -->
 <script lang="ts" setup>
 import { ref } from "vue";
 
