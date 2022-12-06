@@ -1,8 +1,3 @@
-<!-- <template>
-  <div class="home-view-box">
-    Hello HomePage
-  </div>
-</template> -->
 <template>
   <div class="home-view-box">
     <el-container>
