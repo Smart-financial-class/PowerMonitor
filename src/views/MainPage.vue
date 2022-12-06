@@ -30,16 +30,9 @@ const changeMenu = () => {
           </div>
           <div class="logo-text">电量监控</div>
         </div>
-        <el-menu
-          active-text-color="#fff"
-          background-color="rgb(13, 28, 44)"
-          text-color="rgb(140, 147, 155)"
-          default-active="1-1"
-          class="aside-menu"
-          :collapse="isCollapse"
-          @open="handleOpen"
-          @close="handleClose"
-        >
+        <el-menu active-text-color="#fff" background-color="rgb(13, 28, 44)" text-color="rgb(140, 147, 155)"
+          :default-active="defaultActive" class="aside-menu" :collapse="isCollapse" @open="handleOpen"
+          @close="handleClose">
           <el-sub-menu index="1">
             <template #title>
               <el-icon><icon-menu /></el-icon>
@@ -50,25 +43,35 @@ const changeMenu = () => {
             <el-menu-item index="1-3" @click="setRouter('lowpower')">低电量车列表</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="2" @click="setRouter('map')">
-            <el-icon><location /></el-icon>
+            <el-icon>
+              <location />
+            </el-icon>
             <span>地图分布</span>
           </el-menu-item>
           <el-menu-item index="3" @click="setRouter('monitor')">
-            <el-icon><document /></el-icon>
+            <el-icon>
+              <document />
+            </el-icon>
             <span>车辆监控</span>
           </el-menu-item>
           <el-menu-item index="4" @click="setRouter('statistics')">
-            <el-icon><setting /></el-icon>
+            <el-icon>
+              <setting />
+            </el-icon>
             <span>统计分析</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
       <el-container>
         <el-header class="top-line">
-          <el-icon @click="changeMenu"><FolderAdd /></el-icon>
+          <el-icon @click="changeMenu">
+            <FolderAdd />
+          </el-icon>
           <div class="user-icon">
             Username
-            <el-icon><User /></el-icon>
+            <el-icon>
+              <User />
+            </el-icon>
           </div>
         </el-header>
         <el-main class="components-canvas"><router-view></router-view></el-main>
@@ -80,29 +83,34 @@ const changeMenu = () => {
 <script lang="ts">
 import axios from "axios";
 export default {
+  data() {
+    return {
+      defaultActive: "1-1",
+    };
+  },
   mounted() {
     this.mockTest();
   },
   methods: {
-    setRouter (router: string) {
+    setRouter(router: string) {
       this.$router.push(`/${router}`)
     },
     mockTest() {
       axios.get("/api/getLowPowerCarList")
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      });
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        });
 
       axios.get("/api/homePageData")
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      });
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        });
     }
   }
 }
@@ -126,12 +134,14 @@ export default {
       .logo-icon {
         height: 80%;
         margin: 0 10px;
+
         img {
           height: 100%;
           object-fit: contain;
         }
       }
     }
+
     .logo-text {
       font-size: 20px;
       color: #fff;
@@ -141,9 +151,11 @@ export default {
     .el-aside {
       background-color: rgb(13, 28, 44);
       overflow: hidden;
+
       .el-menu {
         width: 202px;
       }
+
       :deep(.is-active) {
         background-color: rgb(69, 141, 247) !important;
       }
@@ -158,6 +170,7 @@ export default {
 
     .components-canvas {
       background-color: rgb(243, 246, 247);
+      overflow: hidden;
     }
   }
 }
