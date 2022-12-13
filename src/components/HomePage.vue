@@ -3,12 +3,7 @@
     <el-container>
       <el-header>
         <el-row :gutter="15" class="demo-radius">
-          <el-col
-            v-for="(radius, i) in radiusGroup"
-            :key="i"
-            :span="5"
-            :xs="{ span: 12 }"
-          >
+          <el-col v-for="(radius, i) in radiusGroup" :key="i" :span="5" :xs="{ span: 12 }">
             <div class="border">
               <div class="title">{{ radius.name }}</div>
               <div class="value">{{ radius.num }}</div>
@@ -21,13 +16,7 @@
       <div style="height: 60vh" class="main">
         <el-auto-resizer>
           <template #default="{ height, width }">
-            <el-table-v2
-              :columns="columns"
-              :data="data"
-              :width="width"
-              :height="height"
-              fixed
-            />
+            <el-table-v2 :columns="columns" :data="data" :width="width" :height="height" fixed />
           </template>
         </el-auto-resizer>
       </div>
@@ -87,6 +76,15 @@ const generateData = (
     );
   });
 
+let proxy = 
+axios.get("/api/homePageData")
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  });
+
 const columns = generateColumns(6);
 const data = generateData(columns, 200);
 </script>
@@ -98,6 +96,7 @@ const data = generateData(columns, 200);
   margin: 10px 0;
   text-align: left;
 }
+
 .demo-radius .value {
   color: var(--el-text-color-primary);
   font-size: 24px;
@@ -105,6 +104,7 @@ const data = generateData(columns, 200);
   margin: 10px 0;
   text-align: left;
 }
+
 .demo-radius .radius {
   height: 40px;
   border: 1px solid var(--el-border-color);
@@ -118,6 +118,7 @@ const data = generateData(columns, 200);
   padding: 5%;
   background-color: #fff;
 }
+
 .main {
   margin-top: 100px;
   margin-left: 20px;
