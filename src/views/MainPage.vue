@@ -74,7 +74,11 @@ const changeMenu = () => {
             </el-icon>
           </div>
         </el-header>
-        <el-main class="components-canvas"><router-view></router-view></el-main>
+        <el-main class="components-canvas">
+          <Suspense>
+            <router-view></router-view>
+          </Suspense>
+        </el-main>
       </el-container>
     </el-container>
   </div>

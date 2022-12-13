@@ -9,7 +9,7 @@ import axios from 'axios'
 
 const app = createApp(App)
 // 全局引入axios
-app.config.globalProperties.axios = axios
+app.config.globalProperties.$axios = axios
 
 app.use(ElementPlus)
 app.use(router)

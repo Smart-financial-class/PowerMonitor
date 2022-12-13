@@ -15,9 +15,14 @@
       <!-- 集团列表 -->
       <div style="height: 60vh" class="main">
         <el-auto-resizer>
-          <template #default="{ height, width }">
-            <el-table-v2 :columns="columns" :data="data" :width="width" :height="height" fixed />
-          </template>
+          <el-table :data="tableData" height="60vh" style="width: 100%">
+            <el-table-column prop="公司" label="公司" width="180" />
+            <el-table-column prop="车辆总数" label="车辆总数" width="180" />
+            <el-table-column prop="监控车辆" label="监控车辆" width="180" />
+            <el-table-column prop="监控车辆占比" label="监控车辆占比" width="180" />
+            <el-table-column prop="出车总数" label="出车总数" width="180" />
+            <el-table-column prop="出车总数占比" label="出车总数占比" />
+          </el-table>
         </el-auto-resizer>
       </div>
     </el-container>
@@ -26,6 +31,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import axios from "axios";
 
 const radiusGroup = ref([
   {
@@ -42,51 +48,15 @@ const radiusGroup = ref([
   },
 ]);
 
-const getValue = (type: string) => {
-  const getCssVarValue = (prefix, type) =>
-    getComputedStyle(document.documentElement).getPropertyValue(
-      `--el-${prefix}-${type}`
-    );
-  return getCssVarValue("border-radius", type);
-};
-const generateColumns = (length = 10, prefix = "column-", props?: any) =>
-  Array.from({ length }).map((_, columnIndex) => ({
-    ...props,
-    key: `${prefix}${columnIndex}`,
-    dataKey: `${prefix}${columnIndex}`,
-    title: `Column ${columnIndex}`,
-    width: 200,
-  }));
-
-const generateData = (
-  columns: ReturnType<typeof generateColumns>,
-  length = 200,
-  prefix = "row-"
-) =>
-  Array.from({ length }).map((_, rowIndex) => {
-    return columns.reduce(
-      (rowData, column, columnIndex) => {
-        rowData[column.dataKey] = `Row ${rowIndex} - Col ${columnIndex}`;
-        return rowData;
-      },
-      {
-        id: `${prefix}${rowIndex}`,
-        parentId: null,
-      }
-    );
-  });
-
-let proxy = 
-axios.get("/api/homePageData")
-  .then(res => {
-    console.log(res)
-  })
-  .catch(err => {
-    console.log(err)
-  });
-
-const columns = generateColumns(6);
-const data = generateData(columns, 200);
+const tableData = await new Promise((resolve, reject) => {
+  axios.get("/api/homePageData")
+    .then(res => {
+      resolve(res.data.data.list)
+    })
+    .catch(err => {
+      reject(err)
+    });
+});
 </script>
 
 <style scoped>
